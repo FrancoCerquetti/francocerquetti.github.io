@@ -21,7 +21,7 @@ const buttonStyle = {
 
 const iconStyle = {
     position: 'absolute',
-    top: '58.7%',
+    top: '58.5%',
     left: '61.5%'
 }
 
