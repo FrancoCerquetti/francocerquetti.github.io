@@ -1,0 +1,23 @@
+div {
+    position: relative;
+    padding-top: 10px;
+}
+
+.pokedex {
+    display: block;
+    margin: auto;
+}
+
+.pokemon {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    height: 350px;
+    width: 325px;
+}
+
+.score {
+    position: absolute;
+    top: 59%;
+    left: 63.5%;
+}
