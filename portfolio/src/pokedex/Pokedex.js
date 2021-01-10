@@ -1,29 +1,12 @@
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, TextField } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ScoreIcon from '@material-ui/icons/Score';
 import pokedexImg from './Pokedex.png'
 import './Pokedex.css'
 
 const POKEDEX_URL = 'https://pokeapi.co/api/v2/pokedex/2';
-
-const textFieldStyle = {
-    position: 'absolute',
-    top: '40%',
-    left: '59.5%'
-}
-
-const buttonStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '62.5%'
-}
-
-const iconStyle = {
-    position: 'absolute',
-    top: '58.5%',
-    left: '61.5%'
-}
 
 const Pokedex = () => {
 
@@ -34,6 +17,24 @@ const Pokedex = () => {
     const [guessButtonDisabled, setGuessButtonDisabled] = useState();
     const [score, setScore] = useState(0);
     // const [loading, setLoading] = useState(false);
+
+    const textFieldStyle = {
+        position: 'absolute',
+        top: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '30%' : '21%',
+        left: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '57%' : '55.5%',
+    }
+    
+    const buttonStyle = {
+        position: 'absolute',
+        top: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '38%' : '27%',
+        left: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '59.25%' : '57.25%',
+    }
+    
+    const iconStyle = {
+        position: 'absolute',
+        top: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '34.75%' : '24.8%',
+        left: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '58.75%' : '56.75%',
+    }
 
     const changePokemon = pokemonArray => {
         const max = pokemonArray.length;
