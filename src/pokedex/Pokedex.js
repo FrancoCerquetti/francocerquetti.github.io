@@ -20,20 +20,21 @@ const Pokedex = () => {
 
     const textFieldStyle = {
         position: 'absolute',
-        top: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '30%' : '21%',
-        left: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '57%' : '55.5%',
+        width: '200px',
+        top: '300px',
+        left: useMediaQuery('(min-width: 1440px) and (max-width: 1919px)') ? '840px' : '1080px',
     }
     
     const buttonStyle = {
         position: 'absolute',
-        top: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '38%' : '27%',
-        left: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '59.25%' : '57.25%',
+        top: '405px',
+        left: useMediaQuery('(min-width: 1440px) and (max-width: 1919px)') ? '905px' : '1145px',
     }
     
     const iconStyle = {
         position: 'absolute',
-        top: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '34.75%' : '24.8%',
-        left: useMediaQuery('(max-width: 1920), (max-height: 1080px)') ? '58.75%' : '56.75%',
+        top: '373px',
+        left: useMediaQuery('(min-width: 1440px) and (max-width: 1919px)') ? '895px' : '1135px',
     }
 
     const changePokemon = pokemonArray => {
