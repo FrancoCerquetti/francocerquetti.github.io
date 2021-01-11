@@ -22,19 +22,22 @@ const Pokedex = () => {
         position: 'absolute',
         width: '200px',
         top: '300px',
-        left: useMediaQuery('(min-width: 1440px) and (max-width: 1919px)') ? '840px' : '1080px',
+        left: '50%',
+        'margin-left': '120px'
     }
     
     const buttonStyle = {
         position: 'absolute',
         top: '405px',
-        left: useMediaQuery('(min-width: 1440px) and (max-width: 1919px)') ? '905px' : '1145px',
+        left: '50%',
+        'margin-left': '180px'
     }
     
     const iconStyle = {
         position: 'absolute',
         top: '373px',
-        left: useMediaQuery('(min-width: 1440px) and (max-width: 1919px)') ? '895px' : '1135px',
+        left: '50%',
+        'margin-left': '170px'
     }
 
     const changePokemon = pokemonArray => {
