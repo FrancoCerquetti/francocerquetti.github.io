@@ -1,9 +1,8 @@
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, TextField } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import ScoreIcon from '@material-ui/icons/Score';
-import pokedexImg from './Pokedex.png'
+import pokedexImg from '../assets/Pokedex.png'
+import pokemonThemeSong from '../assets/pokemon-theme-song.mp3'
 import './Pokedex.css'
 
 const POKEDEX_URL = 'https://pokeapi.co/api/v2/pokedex/2';
@@ -16,28 +15,37 @@ const Pokedex = () => {
     const [correctAnswer, setCorrectAnswer] = useState();
     const [guessButtonDisabled, setGuessButtonDisabled] = useState();
     const [score, setScore] = useState(0);
-    // const [loading, setLoading] = useState(false);
+    const [started, setStarted] = useState(false);
+
+    const themeSong = new Audio(pokemonThemeSong);
+    themeSong.loop = true;
 
     const textFieldStyle = {
         position: 'absolute',
         width: '200px',
         top: '300px',
         left: '50%',
-        'margin-left': '120px'
+        marginLeft: '120px'
     }
     
+    const startButtonStyle = {
+        position: 'absolute',
+        top: '335px',
+        left: '50%',
+        marginLeft: '180px',
+        visibility: started ? 'hidden' : 'visible'
+    }
+
     const buttonStyle = {
         position: 'absolute',
         top: '405px',
         left: '50%',
-        'margin-left': '180px'
+        marginLeft: '180px'
     }
-    
-    const iconStyle = {
-        position: 'absolute',
-        top: '373px',
-        left: '50%',
-        'margin-left': '170px'
+
+    const start = () => {
+        setStarted(true);
+        themeSong.play();
     }
 
     const changePokemon = pokemonArray => {
@@ -46,7 +54,6 @@ const Pokedex = () => {
         const idx = Math.floor(random);
         setCurrentPokemon(pokemonArray[idx]);
         setUserGuess('');
-        // setLoading(true);
     }
 
     const nextPokemon = () => {
@@ -86,24 +93,44 @@ const Pokedex = () => {
     }, [userGuess, currentPokemon]);
 
     return (
-        <div class='container'>
-            { /* <CircularProgress style={{ visibility: loading ? '' : 'hidden' }} /> */ }
+        <div className='container'>
             <img src={pokedexImg} alt='Pokedex' className='pokedex' />
-            { currentPokemon ?
-                <img src={currentPokemon.sprite} alt={ currentPokemon.name } className='pokemon' /*onLoad={() => setLoading(false)}*/ />
-                : null
-            }
-            <TextField style={textFieldStyle} value={userGuess} error={!correctAnswer} onChange={ e => setUserGuess(e.target.value) } />
             <Button 
-                style={buttonStyle}
+                style={startButtonStyle}
                 variant='contained'
-                disabled={guessButtonDisabled}
                 color='primary'
-                onClick={ () => nextPokemon() } >
-                    Next!
+                onClick={ () => start() } >
+                    Start!
             </Button>
-            <ScoreIcon style={iconStyle} />
-            <label className='score'>Score: {score}</label>
+            { started ?
+                <div>
+                    { currentPokemon ?
+                        <img src={currentPokemon.sprite} alt={ currentPokemon.name } className='pokemon'/>
+                        : null
+                    }
+                    <TextField style={textFieldStyle} value={userGuess} error={!correctAnswer} onChange={ e => setUserGuess(e.target.value) } />
+                    <Button 
+                        style={buttonStyle}
+                        variant='contained'
+                        disabled={guessButtonDisabled}
+                        color='primary'
+                        onClick={ () => nextPokemon() } >
+                            Next!
+                    </Button>
+                    <img 
+                        src="https://fontmeme.com/permalink/210112/acc6915a3b1c8f2927dd3d0a562bab86.png" 
+                        className='score' 
+                        alt="score" 
+                        border="0"
+                    />
+                    <label className='score-points'>{score}</label>
+                    <img src="https://fontmeme.com/permalink/210112/dc1f33a485097e475278d5b3fad8e30c.png" 
+                        className='logo'
+                        alt="pokemon-font" 
+                        border="0"
+                    />
+                </div> : null
+            }
         </div>
     );
 }
