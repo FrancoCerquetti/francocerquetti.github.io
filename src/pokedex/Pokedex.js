@@ -19,6 +19,7 @@ const Pokedex = () => {
 
     const themeSong = new Audio(pokemonThemeSong);
     themeSong.loop = true;
+    themeSong.volume = 0.5;
 
     const textFieldStyle = {
         position: 'absolute',
