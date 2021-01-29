@@ -1,14 +1,44 @@
-div {
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.game-container {
     position: relative;
     padding-top: 10px;
     width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.sprites {
+    width: 25%;
+    height: 200px;
+}
+
+.pokes1 {
+    background-color: blue;
+}
+
+.pokes2 {
+    background-color: green;
+}
+
+.pokedex-container {
+    position: relative;
+    background-color: violet;
+    width: 200px;
+    height: 200px;
 }
 
 .pokedex {
     position: absolute;
+    left: 0;
+    top: 0;
     z-index: -1;
-    left: 50%;
-    margin-left: -400px;
+    /* left: 50%;
+    margin-left: -400px; */
 }
 
 .pokemon {
